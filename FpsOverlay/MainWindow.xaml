@@ -12,7 +12,7 @@
                 Margin="264,68,0,0" VerticalAlignment="Top" Width="173" Click="btnStop_Click" />
         <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="264,143,0,0"
                 VerticalAlignment="Top" Width="173" Click="btnExit_Click" />
-        <StackPanel  Margin="45" x:Name="Sp1" > 
+        <StackPanel  Margin="45" x:Name="Sp1" Width="150" HorizontalAlignment="Left" > 
             <CheckBox x:Name="ChkShowFps" IsChecked="False" Content="Show Overlay Fps " Margin="5"/>
             <CheckBox x:Name="ChkShowBorder" IsChecked="False" Content="Show Overlay Border" Margin="5"/>
             <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="False" Content="Show Aim CrossHair" Margin="5"/>
