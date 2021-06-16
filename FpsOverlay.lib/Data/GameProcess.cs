@@ -31,7 +31,7 @@ namespace FpsOverlay.Lib.Data
         protected override string ThreadName => nameof(GameProcess);
 
         /// <inheritdoc />
-        protected override TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0, 500);
+        protected override TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0, 999);
 
         /// <summary>
         /// Game process.

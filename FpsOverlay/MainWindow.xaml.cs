@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using FpsOverlay.Lib.Data;
@@ -46,12 +47,14 @@ namespace FpsOverlay
             GameProcess = new GameProcess();
             GameData = new GameData(GameProcess);
             WindowOverlay = new WindowOverlay(GameProcess);
+
+            WindowOverlay.MustBeCanceled += (s,e) =>  ctx.Cancel();
+            
             Graphics = new Graphics(WindowOverlay, GameProcess, GameData,
                 chkShowFps?.IsChecked ?? false,
                 chkShowAimCrossHair?.IsChecked ?? false,
                 whMode,
                 chkShowBorder?.IsChecked ?? false);
-
             Run();
         }
 

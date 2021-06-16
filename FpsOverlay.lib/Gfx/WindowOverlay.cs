@@ -71,12 +71,13 @@ namespace FpsOverlay.Lib.Gfx
             };
             Window.SizeChanged += (sender, args) => ExtendFrameIntoClientArea();
             Window.LocationChanged += (sender, args) => ExtendFrameIntoClientArea();
-            // Window.Closed += (sender, args) => System.Windows.Application.Current.Shutdown();
+            Window.Closed += (sender, args) => MustBeCanceled?.Invoke(this,args);
 
             // show window
             Window.Show();
         }
 
+        public event EventHandler MustBeCanceled;
         /// <inheritdoc />
         public override void Dispose()
         {

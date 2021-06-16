@@ -24,7 +24,7 @@ namespace FpsOverlay.Lib.Utils
         /// <summary>
         /// Thread frame sleep.
         /// </summary>
-        protected virtual TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0, 1);
+        protected virtual TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0,1);
 
 
         /// <summary>
