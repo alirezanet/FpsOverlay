@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FpsOverlay", "FpsOverlay\FpsOverlay.csproj", "{2C89F096-6D18-494A-8B2E-AC79E2D0187D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FpsOverlay.lib", "FpsOverlay.lib\FpsOverlay.lib.csproj", "{05F34B00-9B76-4C32-A8A4-D5AAAA4390D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C89F096-6D18-494A-8B2E-AC79E2D0187D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C89F096-6D18-494A-8B2E-AC79E2D0187D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C89F096-6D18-494A-8B2E-AC79E2D0187D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C89F096-6D18-494A-8B2E-AC79E2D0187D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F34B00-9B76-4C32-A8A4-D5AAAA4390D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F34B00-9B76-4C32-A8A4-D5AAAA4390D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F34B00-9B76-4C32-A8A4-D5AAAA4390D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F34B00-9B76-4C32-A8A4-D5AAAA4390D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
