@@ -3,18 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FpsOverlay"
         mc:Ignorable="d"
-        Title="Fps Overlay" Height="350" Width="525" >
+        Title="Fps Overlay" Height="350" Width="525">
     <Grid>
-        <RadioButton x:Name="chkDisableWh"  Content="Disable WallHack" GroupName="wh" HorizontalAlignment="Left" Margin="39,36,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="chkSkeletonWh"  Content="Skeleton WallHack" GroupName="wh" IsChecked="True" HorizontalAlignment="Left" Margin="39,75,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="chkHitboxesWh" Content="Hitboxes WallHack" GroupName="wh" HorizontalAlignment="Left" Margin="39,56,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Height="27" Margin="264,36,0,0" VerticalAlignment="Top" Width="173" Click="btnStart_Click"/>
-        <Button x:Name="btnStop" Content="Stop" IsEnabled="False" HorizontalAlignment="Left" Height="27" Margin="264,68,0,0" VerticalAlignment="Top" Width="173" Click="btnStop_Click"/>
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="264,143,0,0" VerticalAlignment="Top" Width="173" Click="btnExit_Click"/>
-        <CheckBox x:Name="chkShowFps" IsChecked="True" Content="Show Hack Fps" HorizontalAlignment="Left" Margin="39,122,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chkShowBorder" IsChecked="True" Content="Show Overlay Border" HorizontalAlignment="Left" Margin="39,141,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chkShowAimCrossHair" IsChecked="True" Content="Show Aim Crosshair" HorizontalAlignment="Left" Margin="39,158,0,0" VerticalAlignment="Top"/> 
+        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27" Margin="264,36,0,0"
+                VerticalAlignment="Top" Width="173" Click="btnStart_Click" />
+        <Button x:Name="BtnStop" Content="Stop" IsEnabled="False" HorizontalAlignment="Left" Height="27"
+                Margin="264,68,0,0" VerticalAlignment="Top" Width="173" Click="btnStop_Click" />
+        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="264,143,0,0"
+                VerticalAlignment="Top" Width="173" Click="btnExit_Click" />
+        <StackPanel  Margin="45" x:Name="Sp1" > 
+            <CheckBox x:Name="ChkShowFps" IsChecked="False" Content="Show Overlay Fps " Margin="5"/>
+            <CheckBox x:Name="ChkShowBorder" IsChecked="False" Content="Show Overlay Border" Margin="5"/>
+            <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="False" Content="Show Aim CrossHair" Margin="5"/>
+            <CheckBox x:Name="ChkAimAssist" IsChecked="False" Content="Aim Assist" Margin="5"/>
+            <CheckBox x:Name="ChkTriggerBot" IsChecked="False" Content="Aim Trigger Bot" Margin="5"/>
+            
+            <RadioButton x:Name="ChkDisableWh" Content="Disable WallHack" GroupName="wh" Margin="5 20 5 5" />
+            <RadioButton x:Name="ChkSkeletonWh" Content="Skeleton WallHack" GroupName="wh" IsChecked="True" Margin="5"/>
+            <RadioButton x:Name="ChkHitBoxesWh" Content="HitBoxes WallHack" GroupName="wh" Margin="5"/>
+        </StackPanel>
     </Grid>
+
 </Window>

@@ -39,8 +39,8 @@ namespace FpsOverlay
         private void Start()
         {
             var whMode = Graphics.WhMode.Disable;
-            if (chkSkeletonWh?.IsChecked ?? false) whMode = Graphics.WhMode.Skeleton;
-            if (chkHitboxesWh?.IsChecked ?? false) whMode = Graphics.WhMode.Hitboxes;
+            if (ChkSkeletonWh?.IsChecked ?? false) whMode = Graphics.WhMode.Skeleton;
+            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = Graphics.WhMode.Hitboxes;
 
             ctx = new CancellationTokenSource();
             // your Legacy code
@@ -51,39 +51,48 @@ namespace FpsOverlay
             WindowOverlay.MustBeCanceled += (s,e) =>  ctx.Cancel();
             
             Graphics = new Graphics(WindowOverlay, GameProcess, GameData,
-                chkShowFps?.IsChecked ?? false,
-                chkShowAimCrossHair?.IsChecked ?? false,
+                ChkShowFps?.IsChecked ?? false,
+                ChkShowAimCrossHair?.IsChecked ?? false,
                 whMode,
-                chkShowBorder?.IsChecked ?? false);
-            Run();
-        }
-
-        private CancellationTokenSource ctx;
-
-        private void Run()
-        {
+                ChkShowBorder?.IsChecked ?? false);
+            
             var token = ctx.Token;
-            //TriggerBot = new TriggerBot(GameProcess, GameData);
-            //AimBot = new AimBot(GameProcess, GameData);
+ 
             GameProcess.Start(token);
             GameData.Start(token);
             WindowOverlay.Start(token);
             Graphics.Start(token);
-            //TriggerBot.Start();
-            //AimBot.Start(); 
+
+            if (ChkAimAssist?.IsChecked ?? false)
+            {
+                AimBot = new AimBot(GameProcess, GameData);
+                AimBot.Start(token);
+            }
+                
+            if (ChkTriggerBot?.IsChecked ?? false)
+            {
+                TriggerBot = new TriggerBot(GameProcess, GameData);
+                TriggerBot.Start(token);
+            }
+
         }
+
+        private CancellationTokenSource ctx;
+
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            btnStart.IsEnabled = false;
-            btnStop.IsEnabled = true;
+            BtnStart.IsEnabled = false;
+            BtnStop.IsEnabled = true;
+            Sp1.IsEnabled = false;
             Start();
         }
 
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {
-            btnStop.IsEnabled = false;
-            btnStart.IsEnabled = true;
+            BtnStop.IsEnabled = false;
+            BtnStart.IsEnabled = true;
+            Sp1.IsEnabled = true;
             ctx.Cancel();
             Cleanup();
         }
