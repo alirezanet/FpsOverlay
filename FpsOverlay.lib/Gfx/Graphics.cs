@@ -17,10 +17,10 @@ namespace FpsOverlay.Lib.Gfx
     /// </summary>
     public class Graphics : ThreadedComponent
     {
-        private readonly bool showAilCrossHair;
-        private readonly bool showFps;
-        private readonly bool showWindowBorder;
-        private readonly WhMode WallHackMode;
+        private readonly bool _showAilCrossHair;
+        private readonly bool _showFps;
+        private readonly bool _showWindowBorder;
+        private readonly WhMode _wallHackMode;
 
         #region // storage
 
@@ -43,7 +43,7 @@ namespace FpsOverlay.Lib.Gfx
         public Device Device { get; private set; }
 
         /// <inheritdoc cref="Microsoft.DirectX.Direct3D.Font" />
-        public Font FontVerdana8 { get; private set; }
+        private Font FontVerdana8 { get; set; }
 
         #endregion
 
@@ -53,16 +53,16 @@ namespace FpsOverlay.Lib.Gfx
         {
             Disable = 0,
             Skeleton = 1,
-            Hitboxes = 2
+            HitBoxes = 2
         }
 
         /// <summary />
         public Graphics(WindowOverlay windowOverlay, GameProcess gameProcess, GameData gameData, bool showFps, bool showAilCrossHair, WhMode whMode, bool showWindowBorder)
         {
-            this.showFps = showFps;
-            this.showAilCrossHair = showAilCrossHair;
-            WallHackMode = whMode;
-            this.showWindowBorder = showWindowBorder;
+            _showFps = showFps;
+            _showAilCrossHair = showAilCrossHair;
+            _wallHackMode = whMode;
+            _showWindowBorder = showWindowBorder;
 
             WindowOverlay = windowOverlay;
             GameProcess = gameProcess;
@@ -153,15 +153,15 @@ namespace FpsOverlay.Lib.Gfx
         /// </summary>
         private void Render()
         {
-            if (showWindowBorder) DrawWindowBorder();
-            if (showFps) DrawFps();
-            if (showAilCrossHair) EspAimCrosshair.Draw(this);
-            switch (WallHackMode)
+            if (_showWindowBorder) DrawWindowBorder();
+            if (_showFps) DrawFps();
+            if (_showAilCrossHair) EspAimCrosshair.Draw(this);
+            switch (_wallHackMode)
             {
                 case WhMode.Skeleton:
                     EspSkeleton.Draw(this);
                     break;
-                case WhMode.Hitboxes:
+                case WhMode.HitBoxes:
                     EspHitBoxes.Draw(this);
                     break;
             }

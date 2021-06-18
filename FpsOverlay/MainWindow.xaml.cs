@@ -40,7 +40,7 @@ namespace FpsOverlay
         {
             var whMode = Graphics.WhMode.Disable;
             if (ChkSkeletonWh?.IsChecked ?? false) whMode = Graphics.WhMode.Skeleton;
-            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = Graphics.WhMode.Hitboxes;
+            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = Graphics.WhMode.HitBoxes;
 
             ctx = new CancellationTokenSource();
             // your Legacy code
