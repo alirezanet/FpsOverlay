@@ -23,7 +23,7 @@ namespace FpsOverlay.Lib.Features
                 }
 
                 // draw
-                var color = entity.Team == Team.Terrorists ? Color.Gold : Color.DodgerBlue;
+                var color = entity.Team == Team.Terrorists ? Color.FromArgb(69,255,189,0) : Color.FromArgb(69,0,178,255);
                 Draw(graphics, entity, color);
             }
         }
