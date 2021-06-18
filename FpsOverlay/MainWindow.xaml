@@ -13,9 +13,9 @@
         <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="363,227,0,0"
                 VerticalAlignment="Top" Width="60" Click="btnExit_Click" />
         <StackPanel  Margin="23,27,0,63" x:Name="Sp1" Width="150" HorizontalAlignment="Left" >
-            <CheckBox x:Name="ChkShowFps" IsChecked="False" Content="Show Overlay Fps " Margin="5"/>
+            <CheckBox x:Name="ChkShowFps" IsChecked="True" Content="Show Overlay Fps " Margin="5"/>
             <CheckBox x:Name="ChkShowBorder" IsChecked="False" Content="Show Overlay Border" Margin="5"/>
-            <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="False" Content="Show Aim CrossHair" Margin="5"/>
+            <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="True" Content="Show Aim CrossHair" Margin="5"/>
             <CheckBox x:Name="ChkAimAssist" IsChecked="False" Content="Aim Bot" Margin="5"/>
             <CheckBox x:Name="ChkTriggerBot" IsChecked="False" Content="Aim Trigger" Margin="5"/>
 
@@ -27,11 +27,11 @@
         <GroupBox Header="Aim Bot Config" IsEnabled="{Binding IsChecked, ElementName=ChkAimAssist}" HorizontalAlignment="Left" Height="119" Margin="223,27,0,0" VerticalAlignment="Top" Width="228">
             <Grid>
                 <Label Content="Fov" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,4,0,0"/>
-                <Slider  x:Name="sldFov"  AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Maximum="20" Margin="85,8,0,0" Value="7" Cursor="Hand" TickFrequency="5"/>
+                <Slider  x:Name="sldFov"  AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Maximum="20" Margin="85,8,0,0" Value="4" Cursor="Hand" TickFrequency="5"/>
                 <Label Content="Smoothness" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,30,0,0"/>
-                <Slider x:Name="sldSmoothness" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Margin="85,36,0,0" Value="3" Cursor="Hand"/>
+                <Slider x:Name="sldSmoothness" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Margin="85,36,0,0" Value="5" Cursor="Hand"/>
                 <Label Content="Bone[1-128]" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,61,0,0"/>
-                <TextBox x:Name="txtBoneId" HorizontalAlignment="Left" Height="20" Margin="89,64,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="76"/>
+                <TextBox x:Name="txtBoneId" HorizontalAlignment="Left" Height="20" Margin="89,64,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="76"/>
                 <Button x:Name="btnResetAimBotConfig" Content="reset" HorizontalAlignment="Left" Margin="172,-13,-4,0" VerticalAlignment="Top" Width="48" Height="21" Click="btnResetAimBotConfig_Click"/>
             </Grid>
         </GroupBox>

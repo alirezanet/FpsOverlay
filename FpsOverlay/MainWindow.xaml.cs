@@ -149,9 +149,9 @@ namespace FpsOverlay
 
         private void btnResetAimBotConfig_Click(object sender, RoutedEventArgs e)
         {
-            sldFov.Value = 7f;
-            sldSmoothness.Value = 3;
-            txtBoneId.Text = "8";
+            sldFov.Value = 4f;
+            sldSmoothness.Value = 5;
+            txtBoneId.Text = "7";
         }
     }
 }
