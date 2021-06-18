@@ -19,13 +19,14 @@ namespace FpsOverlay.Lib.Features
             foreach (var entity in graphics.GameData.Entities)
             {
                 // validate
-                if (!entity.IsAlive() || entity.AddressBase == graphics.GameData.Player.AddressBase)
+                if (!entity.IsAlive() || entity.AddressBase == graphics.GameData.Player.AddressBase || graphics.GameData.Player.Team == entity.Team )
                 {
                     continue;
                 }
 
                 // draw
                 var color = entity.Team == Team.Terrorists ? Color.Gold : Color.DodgerBlue;
+                
                 Draw(graphics, entity, color);
             }
         }
