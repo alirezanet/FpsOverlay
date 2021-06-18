@@ -58,7 +58,7 @@ namespace FpsOverlay.Lib.Data.Internal
         /// <summary>
         /// Update data from process.
         /// </summary>
-        public virtual bool Update(GameProcess gameProcess)
+        public virtual bool Update(GameProcess gameProcess,Team? playerTeam)
         {
             AddressBase = ReadAddressBase(gameProcess);
             if (AddressBase == IntPtr.Zero)
@@ -66,9 +66,11 @@ namespace FpsOverlay.Lib.Data.Internal
                 return false;
             }
 
+            Team = gameProcess.Process.Read<int>(AddressBase + Offsets.m_iTeamNum).ToTeam();
+            if (playerTeam!= null && playerTeam == Team) return false; // we don't need to process our team
+
             LifeState = gameProcess.Process.Read<bool>(AddressBase + Offsets.m_lifeState);
             Health = gameProcess.Process.Read<int>(AddressBase + Offsets.m_iHealth);
-            Team = gameProcess.Process.Read<int>(AddressBase + Offsets.m_iTeamNum).ToTeam();
             Origin = gameProcess.Process.Read<Vector3>(AddressBase + Offsets.m_vecOrigin);
 
             return true;

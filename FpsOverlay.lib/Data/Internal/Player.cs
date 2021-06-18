@@ -2,6 +2,7 @@
 using Microsoft.DirectX;
 using FpsOverlay.Lib.Gfx.Math;
 using FpsOverlay.Lib.Utils;
+using FpsOverlay.Lib.Data.Raw;
 
 namespace FpsOverlay.Lib.Data.Internal
 {
@@ -74,9 +75,10 @@ namespace FpsOverlay.Lib.Data.Internal
         }
 
         /// <inheritdoc />
-        public override bool Update(GameProcess gameProcess)
+        public override bool Update(GameProcess gameProcess, Team? playerTeam = null)
         {
-            if (!base.Update(gameProcess))
+            // we don't have team yet
+            if (!base.Update(gameProcess, null))
             {
                 return false;
             }

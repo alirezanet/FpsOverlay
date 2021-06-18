@@ -91,12 +91,9 @@ namespace FpsOverlay.Lib.Data.Internal
         }
 
         /// <inheritdoc />
-        public override bool Update(GameProcess gameProcess)
+        public override bool Update(GameProcess gameProcess, Team? playerTeam)
         {
-            if (!base.Update(gameProcess))
-            {
-                return false;
-            }
+            if (!base.Update(gameProcess,playerTeam)) return false;
 
             Dormant = gameProcess.Process.Read<bool>(AddressBase + Offsets.m_bDormant);
             if (!IsAlive())
@@ -104,11 +101,16 @@ namespace FpsOverlay.Lib.Data.Internal
                 return true;
             }
 
+
             UpdateStudioHdr(gameProcess);
+            //4%
             UpdateStudioHitBoxes(gameProcess);
+            //19%
             UpdateStudioBones(gameProcess);
+            //28%
             UpdateBonesMatricesAndPos(gameProcess);
             UpdateSkeleton();
+ 
 
             return true;
         }

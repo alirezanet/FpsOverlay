@@ -59,7 +59,7 @@ namespace FpsOverlay.Lib.Data
             Player.Update(GameProcess);
             foreach (var entity in Entities)
             {
-                entity.Update(GameProcess);
+                entity.Update(GameProcess, Player.Team);
             }
         }
     }

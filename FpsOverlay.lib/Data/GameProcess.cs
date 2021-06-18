@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using FpsOverlay.lib;
 using FpsOverlay.Lib.Sys;
 using FpsOverlay.Lib.Utils;
 
@@ -10,11 +11,9 @@ namespace FpsOverlay.Lib.Data
     /// <summary>
     /// Game process component.
     /// </summary>
-    public class GameProcess :
-        ThreadedComponent
+    public class GameProcess : ThreadedComponent
     {
-        #region // static
-
+  
         private const string NAME_PROCESS = "csgo";
 
         private const string NAME_MODULE_CLIENT = "client.dll";
@@ -23,14 +22,17 @@ namespace FpsOverlay.Lib.Data
 
         private const string NAME_WINDOW = "Counter-Strike: Global Offensive";
 
-        #endregion
+        public GameProcess(GameSettings gameSetting)
+        {
+            GameSetting = gameSetting;
+        }
 
-        #region // storage
+        public GameSettings GameSetting { get; set; }
 
-        /// <inheritdoc />
+
         protected override string ThreadName => nameof(GameProcess);
 
-        /// <inheritdoc />
+ 
         protected override TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0, 999);
 
         /// <summary>
@@ -68,11 +70,9 @@ namespace FpsOverlay.Lib.Data
         /// </summary>
         public bool IsValid => WindowActive && !(Process is null) && !(ModuleClient is null) && !(ModuleEngine is null);
 
-        #endregion
+    
 
-        #region // ctor
-
-        /// <inheritdoc />
+ 
         public override void Dispose()
         {
             InvalidateWindow();
@@ -81,11 +81,9 @@ namespace FpsOverlay.Lib.Data
             base.Dispose();
         }
 
-        #endregion
+ 
 
-        #region // routines
-
-        /// <inheritdoc />
+ 
         protected override void FrameAction()
         {
             if (!EnsureProcessAndModules())
@@ -181,6 +179,6 @@ namespace FpsOverlay.Lib.Data
             return WindowActive;
         }
 
-        #endregion
+ 
     }
 }

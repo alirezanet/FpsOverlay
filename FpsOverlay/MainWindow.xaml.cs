@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using FpsOverlay.lib;
 using FpsOverlay.Lib.Data;
 using FpsOverlay.Lib.Features;
 using FpsOverlay.Lib.Gfx;
@@ -35,29 +36,20 @@ namespace FpsOverlay
             Application.Current.Exit += (sender, args) => Dispose();
         }
 
-
         private void Start()
         {
-            var whMode = Graphics.WhMode.Disable;
-            if (ChkSkeletonWh?.IsChecked ?? false) whMode = Graphics.WhMode.Skeleton;
-            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = Graphics.WhMode.HitBoxes;
-
-            ctx = new CancellationTokenSource();
+  
             // your Legacy code
-            GameProcess = new GameProcess();
+            GameProcess = new GameProcess(GetGameSettings());
             GameData = new GameData(GameProcess);
             WindowOverlay = new WindowOverlay(GameProcess);
+            WindowOverlay.MustBeCanceled += (s, e) => ctx.Cancel();
+            Graphics = new Graphics(WindowOverlay, GameProcess, GameData);
 
-            WindowOverlay.MustBeCanceled += (s,e) =>  ctx.Cancel();
-            
-            Graphics = new Graphics(WindowOverlay, GameProcess, GameData,
-                ChkShowFps?.IsChecked ?? false,
-                ChkShowAimCrossHair?.IsChecked ?? false,
-                whMode,
-                ChkShowBorder?.IsChecked ?? false);
-            
+
+            ctx = new CancellationTokenSource();
             var token = ctx.Token;
- 
+
             GameProcess.Start(token);
             GameData.Start(token);
             WindowOverlay.Start(token);
@@ -68,13 +60,30 @@ namespace FpsOverlay
                 AimBot = new AimBot(GameProcess, GameData);
                 AimBot.Start(token);
             }
-                
+
             if (ChkTriggerBot?.IsChecked ?? false)
             {
                 TriggerBot = new TriggerBot(GameProcess, GameData);
                 TriggerBot.Start(token);
             }
 
+        }
+
+        private GameSettings GetGameSettings()
+        {
+            var whMode = GameSettings.WallHackModes.Disable;
+            if (ChkSkeletonWh?.IsChecked ?? false) whMode = GameSettings.WallHackModes.Skeleton;
+            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = GameSettings.WallHackModes.HitBoxes;
+            return new GameSettings()
+            {
+                WallHackMode = whMode,
+                ShowFps = ChkShowFps?.IsChecked ?? false,
+                ShowAimCrossHair = ChkShowAimCrossHair?.IsChecked ?? false,
+                ShowOverlayBorder = ChkShowBorder?.IsChecked ?? false,
+                BorderColor = System.Drawing.Color.Green,
+                CtWallHackColor = System.Drawing.Color.FromArgb(100, 0, 178, 255),
+                TrWallHackColor = System.Drawing.Color.FromArgb(100, 255, 189, 0)
+            };
         }
 
         private CancellationTokenSource ctx;

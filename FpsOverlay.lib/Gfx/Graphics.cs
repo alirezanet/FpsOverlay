@@ -8,6 +8,7 @@ using FpsOverlay.Lib.Gfx.Math;
 using FpsOverlay.Lib.Utils;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
+using static FpsOverlay.lib.GameSettings;
 using Font = Microsoft.DirectX.Direct3D.Font;
 
 namespace FpsOverlay.Lib.Gfx
@@ -17,13 +18,7 @@ namespace FpsOverlay.Lib.Gfx
     /// </summary>
     public class Graphics : ThreadedComponent
     {
-        private readonly bool _showAilCrossHair;
-        private readonly bool _showFps;
-        private readonly bool _showWindowBorder;
-        private readonly WhMode _wallHackMode;
-
-        #region // storage
-
+ 
         /// <inheritdoc />
         protected override string ThreadName => nameof(Graphics);
 
@@ -45,24 +40,11 @@ namespace FpsOverlay.Lib.Gfx
         /// <inheritdoc cref="Microsoft.DirectX.Direct3D.Font" />
         private Font FontVerdana8 { get; set; }
 
-        #endregion
-
-        #region
-
-        public enum WhMode
-        {
-            Disable = 0,
-            Skeleton = 1,
-            HitBoxes = 2
-        }
+  
 
         /// <summary />
-        public Graphics(WindowOverlay windowOverlay, GameProcess gameProcess, GameData gameData, bool showFps, bool showAilCrossHair, WhMode whMode, bool showWindowBorder)
+        public Graphics(WindowOverlay windowOverlay, GameProcess gameProcess, GameData gameData)
         {
-            _showFps = showFps;
-            _showAilCrossHair = showAilCrossHair;
-            _wallHackMode = whMode;
-            _showWindowBorder = showWindowBorder;
 
             WindowOverlay = windowOverlay;
             GameProcess = gameProcess;
@@ -89,7 +71,7 @@ namespace FpsOverlay.Lib.Gfx
             WindowOverlay = default;
         }
 
-        #endregion
+ 
 
         #region // routines
 
@@ -153,15 +135,15 @@ namespace FpsOverlay.Lib.Gfx
         /// </summary>
         private void Render()
         {
-            if (_showWindowBorder) DrawWindowBorder();
-            if (_showFps) DrawFps();
-            if (_showAilCrossHair) EspAimCrosshair.Draw(this);
-            switch (_wallHackMode)
+            if (GameProcess.GameSetting.ShowOverlayBorder) DrawWindowBorder();
+            if (GameProcess.GameSetting.ShowFps) DrawFps();
+            if (GameProcess.GameSetting.ShowAimCrossHair) EspAimCrosshair.Draw(this);
+            switch (GameProcess.GameSetting.WallHackMode)
             {
-                case WhMode.Skeleton:
+                case WallHackModes.Skeleton:
                     EspSkeleton.Draw(this);
                     break;
-                case WhMode.HitBoxes:
+                case WallHackModes.HitBoxes:
                     EspHitBoxes.Draw(this);
                     break;
             }
@@ -182,7 +164,7 @@ namespace FpsOverlay.Lib.Gfx
         {
             this.DrawPolylineScreen
             (
-                Color.LawnGreen,
+                GameProcess.GameSetting.BorderColor,
                 new Vector3(0, 0, 0),
                 new Vector3(GameProcess.WindowRectangleClient.Width - 1, 0, 0),
                 new Vector3(GameProcess.WindowRectangleClient.Width - 1, GameProcess.WindowRectangleClient.Height - 1, 0),
