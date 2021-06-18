@@ -172,7 +172,7 @@ namespace FpsOverlay.Lib.Gfx
         /// </summary>
         private void DrawFps()
         {
-            FontVerdana8.DrawText(default, $"{FpsCounter.Fps:0} FPS", 5, 5, Color.Red);
+            FontVerdana8.DrawText(default, $"{FpsCounter.Fps:0} FPS", 5, 5, Color.IndianRed);
         }
 
         /// <summary>

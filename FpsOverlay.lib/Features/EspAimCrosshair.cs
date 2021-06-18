@@ -45,7 +45,7 @@ namespace FpsOverlay.Lib.Features
         private static void Draw(Graphics graphics, Vector3 pointScreen)
         {
             const int radius = 3;
-            var color = System.Drawing.Color.Red;
+            var color = System.Drawing.Color.IndianRed;
             graphics.DrawPolylineScreen(color, pointScreen - new Vector3(radius, 0, 0), pointScreen + new Vector3(radius + 1, 0, 0));
             graphics.DrawPolylineScreen(color, pointScreen - new Vector3(0, radius, 0), pointScreen + new Vector3(0, radius + 1, 0));
         }
