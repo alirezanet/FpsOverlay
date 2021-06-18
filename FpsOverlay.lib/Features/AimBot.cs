@@ -27,7 +27,7 @@ namespace FpsOverlay.Lib.Features
         /// <summary>
         /// Bone id to aim for, 8 = head.
         /// </summary>
-        private const int AimBoneId = 8;
+        private int AimBoneId = 8;
 
         /// <summary>
         /// Aim bot field of view (fov) to find targets (in radians).
@@ -72,6 +72,10 @@ namespace FpsOverlay.Lib.Features
             GameProcess = gameProcess;
             GameData = gameData;
             MouseHook = new GlobalHook(HookType.WH_MOUSE_LL, MouseHookCallback);
+
+            AimBoneId = gameProcess.GameSetting.AimSetting.BoneId;
+            AimBotFov = gameProcess.GameSetting.AimSetting.Fov.DegreeToRadian();
+            AimBotSmoothing = gameProcess.GameSetting.AimSetting.Smoothness;
         }
 
         /// <inheritdoc />

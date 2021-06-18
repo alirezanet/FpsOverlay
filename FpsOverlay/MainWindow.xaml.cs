@@ -6,6 +6,7 @@ using FpsOverlay.lib;
 using FpsOverlay.Lib.Data;
 using FpsOverlay.Lib.Features;
 using FpsOverlay.Lib.Gfx;
+using static FpsOverlay.lib.GameSettings;
 
 namespace FpsOverlay
 {
@@ -71,9 +72,10 @@ namespace FpsOverlay
 
         private GameSettings GetGameSettings()
         {
-            var whMode = GameSettings.WallHackModes.Disable;
-            if (ChkSkeletonWh?.IsChecked ?? false) whMode = GameSettings.WallHackModes.Skeleton;
-            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = GameSettings.WallHackModes.HitBoxes;
+            var whMode = WallHackModes.Disable;
+            if (ChkSkeletonWh?.IsChecked ?? false) whMode = WallHackModes.Skeleton;
+            if (ChkHitBoxesWh?.IsChecked ?? false) whMode = WallHackModes.HitBoxes;
+
             return new GameSettings()
             {
                 WallHackMode = whMode,
@@ -82,8 +84,14 @@ namespace FpsOverlay
                 ShowOverlayBorder = ChkShowBorder?.IsChecked ?? false,
                 BorderColor = System.Drawing.Color.Green,
                 CtWallHackColor = System.Drawing.Color.FromArgb(100, 0, 178, 255),
-                TrWallHackColor = System.Drawing.Color.FromArgb(100, 255, 189, 0)
-            };
+                TrWallHackColor = System.Drawing.Color.FromArgb(100, 255, 189, 0),
+                AimSetting = new AimSettings()
+                {
+                    Fov = Convert.ToSingle(sldFov.Value),
+                    Smoothness = Convert.ToInt16(sldSmoothness.Value),
+                    BoneId = Convert.ToInt16(txtBoneId.Text)
+                }
+        };
         }
 
         private CancellationTokenSource ctx;
@@ -137,6 +145,13 @@ namespace FpsOverlay
         private void Dispose()
         {
             Cleanup();
+        }
+
+        private void btnResetAimBotConfig_Click(object sender, RoutedEventArgs e)
+        {
+            sldFov.Value = 7f;
+            sldSmoothness.Value = 3;
+            txtBoneId.Text = "8";
         }
     }
 }

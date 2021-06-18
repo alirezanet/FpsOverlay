@@ -6,10 +6,8 @@ namespace FpsOverlay.Lib.Utils
     /// <summary>
     /// Component which will have a separate thread for looping action.
     /// </summary>
-    public abstract class ThreadedComponent :
-        IDisposable
+    public abstract class ThreadedComponent :  IDisposable
     {
-        #region // storage
 
         /// <summary>
         /// Custom thread name.
@@ -24,17 +22,14 @@ namespace FpsOverlay.Lib.Utils
         /// <summary>
         /// Thread frame sleep.
         /// </summary>
-        protected virtual TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0, 2);
+        protected virtual TimeSpan ThreadFrameSleep { get; set; } = new TimeSpan(0, 0, 0, 0, 1);
 
 
         /// <summary>
         /// Thread for this component.
         /// </summary>
         private Thread Thread { get; set; }
-
-        #endregion
-
-        #region // ctor
+ 
 
         /// <summary />
         protected ThreadedComponent()
@@ -56,9 +51,9 @@ namespace FpsOverlay.Lib.Utils
             Thread = default;
         }
 
-        #endregion
+ 
 
-        #region // routines
+    
 
         private CancellationToken _cancellationToken;
         /// <summary>
@@ -95,6 +90,6 @@ namespace FpsOverlay.Lib.Utils
         /// </summary>
         protected abstract void FrameAction();
 
-        #endregion
+ 
     }
 }

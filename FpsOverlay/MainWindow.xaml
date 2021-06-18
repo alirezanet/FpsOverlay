@@ -4,25 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Fps Overlay" Height="350" Width="525">
+        Title="Fps Overlay" Height="350" Width="495.833">
     <Grid>
-        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27" Margin="264,36,0,0"
-                VerticalAlignment="Top" Width="173" Click="btnStart_Click" />
+        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27" Margin="249,195,0,0"
+                VerticalAlignment="Top" Width="174" Click="btnStart_Click" />
         <Button x:Name="BtnStop" Content="Stop" IsEnabled="False" HorizontalAlignment="Left" Height="27"
-                Margin="264,68,0,0" VerticalAlignment="Top" Width="173" Click="btnStop_Click" />
-        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="264,143,0,0"
-                VerticalAlignment="Top" Width="173" Click="btnExit_Click" />
-        <StackPanel  Margin="45" x:Name="Sp1" Width="150" HorizontalAlignment="Left" > 
+                Margin="249,227,0,0" VerticalAlignment="Top" Width="109" Click="btnStop_Click" />
+        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="363,227,0,0"
+                VerticalAlignment="Top" Width="60" Click="btnExit_Click" />
+        <StackPanel  Margin="23,27,0,63" x:Name="Sp1" Width="150" HorizontalAlignment="Left" >
             <CheckBox x:Name="ChkShowFps" IsChecked="False" Content="Show Overlay Fps " Margin="5"/>
             <CheckBox x:Name="ChkShowBorder" IsChecked="False" Content="Show Overlay Border" Margin="5"/>
             <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="False" Content="Show Aim CrossHair" Margin="5"/>
-            <CheckBox x:Name="ChkAimAssist" IsChecked="False" Content="Aim Assist" Margin="5"/>
-            <CheckBox x:Name="ChkTriggerBot" IsChecked="False" Content="Aim Trigger Bot" Margin="5"/>
-            
+            <CheckBox x:Name="ChkAimAssist" IsChecked="False" Content="Aim Bot" Margin="5"/>
+            <CheckBox x:Name="ChkTriggerBot" IsChecked="False" Content="Aim Trigger" Margin="5"/>
+
             <RadioButton x:Name="ChkDisableWh" Content="Disable WallHack" GroupName="wh" Margin="5 20 5 5" />
             <RadioButton x:Name="ChkSkeletonWh" Content="Skeleton WallHack" GroupName="wh" IsChecked="True" Margin="5"/>
             <RadioButton x:Name="ChkHitBoxesWh" Content="HitBoxes WallHack" GroupName="wh" Margin="5"/>
         </StackPanel>
+
+        <GroupBox Header="Aim Bot Config" IsEnabled="{Binding IsChecked, ElementName=ChkAimAssist}" HorizontalAlignment="Left" Height="119" Margin="223,27,0,0" VerticalAlignment="Top" Width="228">
+            <Grid>
+                <Label Content="Fov" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,4,0,0"/>
+                <Slider  x:Name="sldFov"  AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Maximum="20" Margin="85,8,0,0" Value="7" Cursor="Hand" TickFrequency="5"/>
+                <Label Content="Smoothness" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,30,0,0"/>
+                <Slider x:Name="sldSmoothness" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Margin="85,36,0,0" Value="3" Cursor="Hand"/>
+                <Label Content="Bone[1-128]" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,61,0,0"/>
+                <TextBox x:Name="txtBoneId" HorizontalAlignment="Left" Height="20" Margin="89,64,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="76"/>
+                <Button x:Name="btnResetAimBotConfig" Content="reset" HorizontalAlignment="Left" Margin="172,-13,-4,0" VerticalAlignment="Top" Width="48" Height="21" Click="btnResetAimBotConfig_Click"/>
+            </Grid>
+        </GroupBox>
+
     </Grid>
 
 </Window>
