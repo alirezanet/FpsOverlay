@@ -100,6 +100,7 @@ namespace FpsOverlay
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             // close the app
+            Cleanup();
             Application.Current.Shutdown();
         }
 
