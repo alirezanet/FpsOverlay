@@ -93,7 +93,7 @@ namespace FpsOverlay.Lib.Data.Internal
             EyePosition = Origin + ViewOffset;
             ViewAngles = gameProcess.Process.Read<Vector3>(gameProcess.ModuleEngine.Read<IntPtr>(Offsets.dwClientState) + Offsets.dwClientState_ViewAngles);
             AimPunchAngle = gameProcess.Process.Read<Vector3>(AddressBase + Offsets.m_aimPunchAngle);
-            Fov = gameProcess.Process.Read<int>(AddressBase + Offsets.m_iFOV);
+            Fov = gameProcess.Process.Read<int>(AddressBase + Offsets.m_iFOVStart);
             if (Fov == 0) Fov = 90; // correct for default
 
             // calc data

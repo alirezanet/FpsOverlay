@@ -17,7 +17,7 @@
         public static int m_aimPunchAngle;
         public static int m_bDormant;
         public static int m_dwBoneMatrix;
-        public static int m_iFOV;
+        public static int m_iFOVStart;
         public static int m_iHealth;
         public static int m_iTeamNum;
         public static int m_lifeState;

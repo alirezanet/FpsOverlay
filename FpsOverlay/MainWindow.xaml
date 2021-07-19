@@ -6,8 +6,10 @@
         mc:Ignorable="d"
         Title="Fps Overlay" Height="350" Width="495.833">
     <Grid>
-        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27" Margin="249,195,0,0"
+        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27"  Margin="249,163,0,0"
                 VerticalAlignment="Top" Width="174" Click="btnStart_Click" />
+        <Button x:Name="BtnCheckForUpdate" Content="Check for update" HorizontalAlignment="Left" Height="27" Margin="249,195,0,0"
+                VerticalAlignment="Top" Width="174" Click="BtnCheckForUpdate_OnClick"/>
         <Button x:Name="BtnStop" Content="Stop" IsEnabled="False" HorizontalAlignment="Left" Height="27"
                 Margin="249,227,0,0" VerticalAlignment="Top" Width="109" Click="btnStop_Click" />
         <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="363,227,0,0"
