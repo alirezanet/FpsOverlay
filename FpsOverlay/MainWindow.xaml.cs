@@ -183,8 +183,16 @@ namespace FpsOverlay
         private void SaveNewOffsets(string newOffsets)
         {
             // backup old offsets  
-            File.Move("offsets.txt", "offsets.txt.backup");
-            File.Delete("offsets.txt");
+            try
+            {
+                File.Move("offsets.txt", "offsets" + Guid.NewGuid().ToString().Substring(4) + ".backup");
+                File.Delete("offsets.txt");
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
             File.WriteAllText("offsets.txt", newOffsets);
         }
 
@@ -236,6 +244,7 @@ namespace FpsOverlay
 
         private static async Task<string> DownloadNewOffsets()
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             var client = new WebClient();
             var uri = new Uri("https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.cs");
             var result = await client.DownloadStringTaskAsync(uri);
