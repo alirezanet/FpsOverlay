@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.DirectX;
 using FpsOverlay.Lib.Data;
+using FpsOverlay.Lib.Data.Internal;
 using FpsOverlay.Lib.Gfx.Math;
 using FpsOverlay.Lib.Sys;
 using FpsOverlay.Lib.Sys.Data;
@@ -99,8 +101,8 @@ namespace FpsOverlay.Lib.Features
         private IntPtr MouseHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             return nCode < 0 || ProcessMouseMessage((MouseMessage)wParam)
-                ? User32.CallNextHookEx(MouseHook.HookHandle, nCode, wParam, lParam)    // continue
-                : new IntPtr(1);                                                        // suppress
+                ? User32.CallNextHookEx(MouseHook.HookHandle, nCode, wParam, lParam) // continue
+                : new IntPtr(1); // suppress
         }
 
         /// <summary>
@@ -116,12 +118,14 @@ namespace FpsOverlay.Lib.Features
                     // no matter what state it was before, we just released left mouse, therefore get to idle state
                     State = AimBotState.Up;
                 }
+
                 return true;
             }
 
             if (mouseMessage == MouseMessage.WM_LBUTTONDOWN)
             {
-                if (!GameProcess.IsValid || !GameData.Player.IsAlive() || TriggerBot.IsHotKeyDown())
+                if (!GameProcess.IsValid || !GameData.Player.IsAlive() || TriggerBot.IsHotKeyDown() ||
+                    GetInvalidWeapons().Contains(GameData.Player.ActiveWeapon))
                 {
                     return true;
                 }
@@ -186,6 +190,33 @@ namespace FpsOverlay.Lib.Features
             }
         }
 
+        private static IEnumerable<WeaponIds> GetInvalidWeapons()
+        {
+            yield return WeaponIds.WEAPON_KNIFE;
+            yield return WeaponIds.WEAPON_FLASHBANG;
+            yield return WeaponIds.WEAPON_SMOKEGRENADE;
+            yield return WeaponIds.WEAPON_HEGRENADE;
+            yield return WeaponIds.WEAPON_MOLOTOV;
+            yield return WeaponIds.WEAPON_DECOY;
+            yield return WeaponIds.WEAPON_KNIFE_T;
+            yield return WeaponIds.WEAPON_KNIFEGG;
+            yield return WeaponIds.WEAPON_KNIFE_GUT;
+            yield return WeaponIds.WEAPON_KNIFE_FLIP;
+            yield return WeaponIds.WEAPON_KNIFE_KARAMBIT;
+            yield return WeaponIds.WEAPON_KNIFE_M9_BAYONET;
+            yield return WeaponIds.WEAPON_KNIFE_TACTICAL;
+            yield return WeaponIds.WEAPON_KNIFE_FALCHION;
+            yield return WeaponIds.WEAPON_KNIFE_SURVIVAL_BOWIE;
+            yield return WeaponIds.WEAPON_KNIFE_BUTTERFLY;
+            yield return WeaponIds.WEAPON_KNIFE_PUSH;
+            yield return WeaponIds.WEAPON_KNIFE_URSUS;
+            yield return WeaponIds.WEAPON_KNIFE_GYPSY_JACKKNIFE;
+            yield return WeaponIds.WEAPON_KNIFE_STILETTO;
+            yield return WeaponIds.WEAPON_KNIFE_WIDOWMAKER;
+            yield return WeaponIds.WEAPON_KNIFE_GHOST;
+            yield return WeaponIds.WEAPON_KNIFE_BUTTERFLY;
+        }
+
         /// <summary>
         /// Get aim target.
         /// </summary>
@@ -197,8 +228,8 @@ namespace FpsOverlay.Lib.Features
         {
             var minAngleSize = float.MaxValue;
             aimAngles = new Vector2((float)Math.PI, (float)Math.PI);
-            var targetFound = false;
 
+            var targetFound = false;
             foreach (var entity in GameData.Entities)
             {
                 // validate
@@ -248,7 +279,8 @@ namespace FpsOverlay.Lib.Features
             aimAngles = new Vector2
             (
                 aimDirectionDesired.AngleToSigned(aimDirection, new Vector3(0, 0, 1)),
-                aimDirectionDesired.AngleToSigned(aimDirection, aimDirectionDesired.Cross(new Vector3(0, 0, 1)).Normalized())
+                aimDirectionDesired.AngleToSigned(aimDirection,
+                    aimDirectionDesired.Cross(new Vector3(0, 0, 1)).Normalized())
             );
         }
 

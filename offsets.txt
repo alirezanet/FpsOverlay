@@ -16,3 +16,4 @@ dwViewMatrix = 0x4D94AD4
 m_bDormant = 0xED
 m_pStudioHdr = 0x294C
 m_hActiveWeapon = 0x2EF8
+m_iItemDefinitionIndex = 0x2FAA

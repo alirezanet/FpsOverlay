@@ -25,6 +25,7 @@
         public static int m_vecOrigin;
         public static int m_vecViewOffset;
         public static int m_hActiveWeapon;
+        public static int m_iItemDefinitionIndex;
 
         /// <summary />
         static Offsets()

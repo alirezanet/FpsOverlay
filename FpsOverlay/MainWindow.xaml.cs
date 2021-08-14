@@ -215,7 +215,8 @@ namespace FpsOverlay
                 "m_pStudioHdr",
                 "m_vecOrigin",
                 "m_vecViewOffset",
-                "m_hActiveWeapon"
+                "m_hActiveWeapon",
+                "m_iItemDefinitionIndex" 
             };
         }
 
