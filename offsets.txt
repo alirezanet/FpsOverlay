@@ -1,17 +1,18 @@
 // https://github.com/frk1/hazedumper/blob/master/csgo.cs
 
-dwClientState = 0x588FEC
-dwClientState_ViewAngles = 0x4D90
-dwEntityList = 0x4DA21AC
-dwLocalPlayer = 0xD892CC
-dwViewMatrix = 0x4D93AC4
 m_aimPunchAngle = 0x302C
-m_bDormant = 0xED
 m_dwBoneMatrix = 0x26A8
-m_iFOV = 0x31E8
+m_iFOVStart = 0x31E8
 m_iHealth = 0x100
 m_iTeamNum = 0xF4
 m_lifeState = 0x25F
-m_pStudioHdr = 0x294C
 m_vecOrigin = 0x138
 m_vecViewOffset = 0x108
+dwClientState = 0x588FEC
+dwClientState_ViewAngles = 0x4D90
+dwEntityList = 0x4DA31BC
+dwLocalPlayer = 0xD8A2CC
+dwViewMatrix = 0x4D94AD4
+m_bDormant = 0xED
+m_pStudioHdr = 0x294C
+m_hActiveWeapon = 0x2EF8

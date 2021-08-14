@@ -214,7 +214,8 @@ namespace FpsOverlay
                 "m_lifeState",
                 "m_pStudioHdr",
                 "m_vecOrigin",
-                "m_vecViewOffset"
+                "m_vecViewOffset",
+                "m_hActiveWeapon"
             };
         }
 
@@ -224,7 +225,7 @@ namespace FpsOverlay
             var offsets = OffsetNames();
             var content = new StringBuilder();
             var counter = 0;
-            foreach (var line in result.Split(new[] {Environment.NewLine, "\n", "\"r"}, StringSplitOptions.None))
+            foreach (var line in result.Split(new[] { Environment.NewLine, "\n", "\"r" }, StringSplitOptions.None))
             {
                 var regex = new Regex(@"(public\sconst\sInt32\s*)(\w*)(\s*=\s*\w+)");
                 var match = regex.Match(line);

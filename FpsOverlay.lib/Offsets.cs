@@ -24,6 +24,7 @@
         public static int m_pStudioHdr;
         public static int m_vecOrigin;
         public static int m_vecViewOffset;
+        public static int m_hActiveWeapon;
 
         /// <summary />
         static Offsets()
