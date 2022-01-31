@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -89,6 +90,7 @@ namespace FpsOverlay
                 ShowFps = ChkShowFps?.IsChecked ?? false,
                 ShowAimCrossHair = ChkShowAimCrossHair?.IsChecked ?? false,
                 ShowOverlayBorder = ChkShowBorder?.IsChecked ?? false,
+                NameWindow = txtNamWindow.Text,
                 BorderColor = Color.Green,
                 CtWallHackColor = Color.FromArgb(100, 0, 178, 255),
                 TrWallHackColor = Color.FromArgb(100, 255, 189, 0),
@@ -239,7 +241,7 @@ namespace FpsOverlay
                 offsets.Remove(offset);
             }
 
-            if (counter != 15)
+            if (counter != 17)
                 throw new Exception("Auto update failed. " + string.Join(",", offsets) + " not found.");
             return content.ToString();
         }
@@ -247,9 +249,9 @@ namespace FpsOverlay
         private static async Task<string> DownloadNewOffsets()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            var client = new WebClient();
+            var client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10)};
             var uri = new Uri("https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.cs");
-            var result = await client.DownloadStringTaskAsync(uri);
+            var result = await client.GetStringAsync(uri);
             return result;
         }
     }

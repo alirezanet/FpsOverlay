@@ -4,17 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Fps Overlay" Height="350" Width="495.833">
+        Title="Fps Overlay" Height="350" Width="600.833">
     <Grid>
-        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27"  Margin="249,163,0,0"
+        <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27"  Margin="300,163,0,0"
                 VerticalAlignment="Top" Width="174" Click="btnStart_Click" />
-        <Button x:Name="BtnCheckForUpdate" Content="Check for update" HorizontalAlignment="Left" Height="27" Margin="249,195,0,0"
+        <Button x:Name="BtnCheckForUpdate" Content="Check for update" HorizontalAlignment="Left" Height="27" Margin="300,195,0,0"
                 VerticalAlignment="Top" Width="174" Click="BtnCheckForUpdate_OnClick"/>
         <Button x:Name="BtnStop" Content="Stop" IsEnabled="False" HorizontalAlignment="Left" Height="27"
-                Margin="249,227,0,0" VerticalAlignment="Top" Width="109" Click="btnStop_Click" />
-        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="363,227,0,0"
+                Margin="300,227,0,0" VerticalAlignment="Top" Width="109" Click="btnStop_Click" />
+        <Button x:Name="BtnExit" Content="Exit" HorizontalAlignment="Left" Height="27" Margin="420,227,0,0"
                 VerticalAlignment="Top" Width="60" Click="btnExit_Click" />
-        <StackPanel  Margin="23,27,0,63" x:Name="Sp1" Width="150" HorizontalAlignment="Left" >
+        <StackPanel  Margin="23,27,0,63" x:Name="Sp1" Width="250" HorizontalAlignment="Left" >
             <CheckBox x:Name="ChkShowFps" IsChecked="True" Content="Show Overlay Fps " Margin="5"/>
             <CheckBox x:Name="ChkShowBorder" IsChecked="False" Content="Show Overlay Border" Margin="5"/>
             <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="True" Content="Show Aim CrossHair" Margin="5"/>
@@ -24,9 +24,10 @@
             <RadioButton x:Name="ChkDisableWh" Content="Disable WallHack" GroupName="wh" Margin="5 20 5 5" />
             <RadioButton x:Name="ChkSkeletonWh" Content="Skeleton WallHack" GroupName="wh" IsChecked="True" Margin="5"/>
             <RadioButton x:Name="ChkHitBoxesWh" Content="HitBoxes WallHack" GroupName="wh" Margin="5"/>
+            <TextBox x:Name="txtNamWindow">Counter-Strike: Global Offensive - Direct3D 9</TextBox>
         </StackPanel>
 
-        <GroupBox Header="Aim Bot Config" IsEnabled="{Binding IsChecked, ElementName=ChkAimAssist}" HorizontalAlignment="Left" Height="119" Margin="223,27,0,0" VerticalAlignment="Top" Width="228">
+        <GroupBox Header="Aim Bot Config" IsEnabled="{Binding IsChecked, ElementName=ChkAimAssist}" HorizontalAlignment="Left" Height="119" Margin="300,27,0,0" VerticalAlignment="Top" Width="228">
             <Grid>
                 <Label Content="Fov" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,4,0,0"/>
                 <Slider  x:Name="sldFov"  AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" HorizontalAlignment="Left"  VerticalAlignment="Top"  Width="87" Minimum="1" Maximum="20" Margin="85,8,0,0" Value="4" Cursor="Hand" TickFrequency="5"/>

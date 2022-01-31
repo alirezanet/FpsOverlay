@@ -20,7 +20,7 @@ namespace FpsOverlay.Lib.Data
 
         private const string NAME_MODULE_ENGINE = "engine.dll";
 
-        private const string NAME_WINDOW = "Counter-Strike: Global Offensive";
+        // private const string NAME_WINDOW = "Counter-Strike: Global Offensive - Direct3D 9";
 
         public GameProcess(GameSettings gameSetting)
         {
@@ -162,7 +162,7 @@ namespace FpsOverlay.Lib.Data
         /// </summary>
         private bool EnsureWindow()
         {
-            WindowHwnd = User32.FindWindow(null, NAME_WINDOW);
+            WindowHwnd = User32.FindWindow(null, GameSetting.NameWindow);
             if (WindowHwnd == IntPtr.Zero)
             {
                 return false;

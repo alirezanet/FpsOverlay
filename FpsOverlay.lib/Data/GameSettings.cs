@@ -21,6 +21,7 @@ namespace FpsOverlay.lib
         public Color CtWallHackColor { get; set; }
         public Color TrWallHackColor { get; set; }
         public AimSettings AimSetting { get; set; }
+        public string NameWindow { get; set; }
 
         public enum WallHackModes
         {
