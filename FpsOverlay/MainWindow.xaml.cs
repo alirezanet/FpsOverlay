@@ -94,11 +94,14 @@ namespace FpsOverlay
                 BorderColor = Color.Green,
                 CtWallHackColor = Color.FromArgb(100, 0, 178, 255),
                 TrWallHackColor = Color.FromArgb(100, 255, 189, 0),
+                
                 AimSetting = new AimSettings
                 {
                     Fov = Convert.ToSingle(sldFov.Value),
                     Smoothness = Convert.ToInt16(sldSmoothness.Value),
+                    SpottedByMask = ChkSpottedByMask.IsChecked ?? false,
                     BoneId = Convert.ToInt16(txtBoneId.Text)
+                    
                 }
             };
         }
@@ -256,3 +259,9 @@ namespace FpsOverlay
         }
     }
 }
+
+// private bool IsVisible(int Player)
+// {
+//     int spotted = memory.ReadMemory<int>(Player + Offsets.m_bSpottedByMask);
+//     return (spotted & (0x1 << LocalPlayer.Index)) != 0;
+// }

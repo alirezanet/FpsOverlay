@@ -29,7 +29,7 @@ namespace FpsOverlay.Lib.Features
         /// <summary>
         /// Bone id to aim for, 8 = head.
         /// </summary>
-        private int AimBoneId = 8;
+        private readonly int AimBoneId = 8;
 
         /// <summary>
         /// Aim bot field of view (fov) to find targets (in radians).
@@ -280,7 +280,7 @@ namespace FpsOverlay.Lib.Features
             (
                 aimDirectionDesired.AngleToSigned(aimDirection, new Vector3(0, 0, 1)),
                 aimDirectionDesired.AngleToSigned(aimDirection,
-                    aimDirectionDesired.Cross(new Vector3(0, 0, 1)).Normalized())
+                aimDirectionDesired.Cross(new Vector3(0, 0, 1)).Normalized())
             );
         }
 

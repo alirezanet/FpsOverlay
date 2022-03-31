@@ -36,6 +36,7 @@ namespace FpsOverlay.lib
             public float Fov { get; set; } = 10f;
             public short BoneId { get; set; } = 8;
             public short Smoothness { get; set; } = 3;
+            public bool SpottedByMask { get; set; }
         }
     }
 }

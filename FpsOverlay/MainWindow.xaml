@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Fps Overlay" Height="350" Width="600.833">
+        Title="Fps Overlay" Height="370" Width="600.833">
     <Grid>
         <Button x:Name="BtnStart" Content="Start" HorizontalAlignment="Left" Height="27"  Margin="300,163,0,0"
                 VerticalAlignment="Top" Width="174" Click="btnStart_Click" />
@@ -20,6 +20,7 @@
             <CheckBox x:Name="ChkShowAimCrossHair" IsChecked="True" Content="Show Aim CrossHair" Margin="5"/>
             <CheckBox x:Name="ChkAimAssist" IsChecked="False" Content="Aim Bot" Margin="5"/>
             <CheckBox x:Name="ChkTriggerBot" IsChecked="False" Content="Aim Trigger" Margin="5"/>
+            <CheckBox x:Name="ChkSpottedByMask" IsChecked="False" Content="SpottedByMask" Margin="5" IsEnabled="False"/>
 
             <RadioButton x:Name="ChkDisableWh" Content="Disable WallHack" GroupName="wh" Margin="5 20 5 5" />
             <RadioButton x:Name="ChkSkeletonWh" Content="Skeleton WallHack" GroupName="wh" IsChecked="True" Margin="5"/>
